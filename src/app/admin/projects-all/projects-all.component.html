@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row mt-3 mb-2">
+    <div class="col-md-6 col-xl-4" *ngFor="let obj of projects">
+      <div class="card bg-primary text-white mb-3">
+        <div class="card-header">{{obj.subject}}</div>
+        <div class="card-body">
+          <h5 class="card-title text-white">{{obj.projectName}}</h5>
+          <div class="card-body-texts d-flex mt-1 flex-column justify-content-start align-items-start">
+            <p style="margin: 0">{{obj.nameFirst}}</p>
+            <p style="margin: 0">{{obj.surnameFirst}}</p>
+            <p style="margin: 0">{{obj.iinFirst}}</p>
+          </div>
+          <div class="card-body-texts d-flex mt-1 flex-column justify-content-start align-items-start">
+            <p style="margin: 0">{{obj.nameSecond}}</p>
+            <p style="margin: 0">{{obj.surnameSecond}}</p>
+            <p style="margin: 0">{{obj.iinSecond}}</p>
+          </div>
+          <div class="card-body-texts d-flex mt-1 flex-column justify-content-start align-items-start">
+            <p style="margin: 0">{{obj.nameThird}}</p>
+            <p style="margin: 0">{{obj.surnameThird}}</p>
+            <p style="margin: 0">{{obj.iinThird}}</p>
+          </div>
+          <div class="card-body-texts d-flex mt-1 flex-column justify-content-start align-items-start">
+            <p style="margin: 0">{{obj.nameFourth}}</p>
+            <p style="margin: 0">{{obj.surnameFourth}}</p>
+            <p style="margin: 0">{{obj.iinFourth}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="card offset-lg-1 col-lg-10 mb-2 mt-3">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Регистрация на олимпиаду</h5>
+        <small class="text-muted float-end">Внутри школы</small>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="userForm">
+          <div class="mb-3">
+            <label class="form-label" for="name">Имя участника</label>
+            <input type="text" class="form-control" formControlName="name" id="name" placeholder="John" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="surname">Фамилия участника</label>
+            <input type="text" class="form-control" formControlName="surname" id="surname" placeholder="Doe" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="class">Класс участника</label>
+            <input type="number" [max]="12" [min]="7" formControlName="class" class="form-control" id="class" placeholder="7" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="teacherName">Имя учителя</label>
+            <input type="text" class="form-control" formControlName="teacherName" id="teacherName" placeholder="John" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="teacherSurname">Фамилия учителя</label>
+            <input type="text" class="form-control" formControlName="teacherSurname" id="teacherSurname" placeholder="Doe" />
+          </div>
+          <span *ngIf="userForm.invalid && userForm.touched" class="d-flex align-items-start justify-content-start mb-3" style="color: red">Заполните все данные</span>
+          <span *ngIf="showError" class="d-flex align-items-start justify-content-start mb-3" style="color: red">{{errorMessage}}</span>
+          <button (click)="submit()" class="btn btn-primary">Отправить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

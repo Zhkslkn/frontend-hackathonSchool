@@ -1,0 +1,249 @@
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+  <div class="app-brand demo">
+    <a class="app-brand-link">
+      <span class="app-brand-text demo menu-text fw-bold ms-2">Edu-nis</span>
+    </a>
+
+    <a href="javascript:void(0);" (click)="toggleMenu()" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+      <i class="bx bx-chevron-left bx-sm align-middle"></i>
+    </a>
+  </div>
+
+  <div class="menu-inner-shadow"></div>
+
+  <ul class="menu-inner py-1" *ngIf="!isAdmin">
+    <li class="menu-item" routerLink="/user/dashboard" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}">
+      <a href="javascript:void(0);" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <div data-i18n="Dashboards">Главная страница</div>
+      </a>
+    </li>
+
+    <li class="menu-item"
+        routerLink="/user/dashboard/actions" routerLinkActive="active"
+        (click)="firstToggle = !firstToggle"
+        [ngClass]="{'open': firstToggle}">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-layout"></i>
+        <div data-i18n="Layouts">Деятельности</div>
+      </a>
+
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="#" class="menu-link">
+            <div>Олимпиады</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="#" class="menu-link">
+            <div>Научные проекты</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="menu-item" (click)="secondToggle = !secondToggle" [ngClass]="{'open': secondToggle}">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-store"></i>
+        <div>Курсы</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item"
+            [routerLink]="['/user/dashboard/cources', 'english']" routerLinkActive="active">
+          <a
+            class="menu-link">
+            <div>Английский язык</div>
+          </a>
+        </li>
+        <li class="menu-item"
+            [routerLink]="['/user/dashboard/cources', 'russian']" routerLinkActive="active">
+          <a
+            class="menu-link">
+            <div>Русский язык</div>
+          </a>
+        </li>
+        <li class="menu-item"
+            [routerLink]="['/user/dashboard/cources', 'mathematics']" routerLinkActive="active">
+          <a
+            class="menu-link">
+            <div>Математика</div>
+          </a>
+        </li>
+        <li class="menu-item"
+            [routerLink]="['/user/dashboard/cources', 'physics']" routerLinkActive="active">
+          <a
+            class="menu-link">
+            <div>Физика</div>
+          </a>
+        </li>
+        <li class="menu-item"
+            [routerLink]="['/user/dashboard/cources', 'informatics']" routerLinkActive="active">
+          <a
+            class="menu-link">
+            <div>Информатика</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="menu-header small text-uppercase">
+      <span class="menu-header-text">Личные данные</span>
+    </li>
+    <li class="menu-item"
+        routerLink="/user/dashboard/profile"
+        routerLinkActive="active">
+      <a
+        class="menu-link">
+        <i class='menu-icon tf-icons bx bxs-user-circle'></i>
+        <div data-i18n="Email">Профиль</div>
+      </a>
+    </li>
+    <li class="menu-item" [routerLink]="['/user/dashboard/my-works']" [queryParams]="{prop: 'works'}" routerLinkActive="active">
+      <a
+        class="menu-link">
+        <i class='menu-icon tf-icons bx bx-network-chart'></i>
+        <div data-i18n="Chat">Мои работы</div>
+      </a>
+    </li>
+    <li class="menu-item" [routerLink]="['/user/dashboard/my-works']" [queryParams]="{prop: 'tracking'}" routerLinkActive="active">
+      <a
+        class="menu-link">
+        <i class="menu-icon tf-icons bx bx-calendar"></i>
+        <div data-i18n="Calendar">Трекинг работ</div>
+      </a>
+    </li>
+    <li class="menu-item" [routerLink]="['/user/dashboard/my-works']" [queryParams]="{prop: 'achivements'}" routerLinkActive="active">
+      <a class="menu-link">
+        <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+        <div data-i18n="Misc">Личные достижения </div>
+      </a>
+    </li>
+    <li class="menu-item" (click)="thirdToggle = !thirdToggle" [ngClass]="{'open': thirdToggle}">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+        <div>Настройки аккаунта</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item"
+            (click)="changeRouterAuth('/login')">
+          <a class="menu-link" target="_blank">
+            <div data-i18n="Basic">Логин</div>
+          </a>
+        </li>
+        <li class="menu-item" (click)="changeRouterAuth('/registration')">
+          <a class="menu-link" target="_blank">
+            <div data-i18n="Basic">Регистрация</div>
+          </a>
+        </li>
+        <li class="menu-item" (click)="changeRouterAuth('/forgot-password')">
+          <a class="menu-link" target="_blank">
+            <div data-i18n="Basic">Востановление пароля</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Components -->
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">Общие данные</span></li>
+    <!-- Cards -->
+    <li class="menu-item"
+        [routerLink]="['/user/dashboard/still-developing']"
+        [queryParams]="{prop: 'news'}"
+        routerLinkActive="active">
+      <a class="menu-link">
+        <i class="menu-icon tf-icons bx bx-collection"></i>
+        <div data-i18n="Basic">Новости</div>
+      </a>
+    </li>
+    <!-- User interface -->
+    <li class="menu-item" (click)="fourthToggle = !fourthToggle" [ngClass]="{'open': fourthToggle}">
+      <a href="javascript:void(0)" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-box"></i>
+        <div data-i18n="User interface">Платформа</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item"
+            [routerLink]="['/user/dashboard/still-developing']"
+            [queryParams]="{prop: 'goals'}"
+            routerLinkActive="active">
+          <a class="menu-link">
+            <div>Цели создания</div>
+          </a>
+        </li>
+        <li class="menu-item"
+            [routerLink]="['/user/dashboard/still-developing']"
+            [queryParams]="{prop: 'opportunities'}"
+            routerLinkActive="active">
+          <a class="menu-link">
+            <div>Возможности</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+<!--    still-developing-->
+
+    <li class="menu-item"
+        [routerLink]="['/user/dashboard/still-developing']"
+        [queryParams]="{prop: 'support'}"
+        routerLinkActive="active">
+      <a
+        class="menu-link">
+        <i class="menu-icon tf-icons bx bx-support"></i>
+        <div>Поддержка</div>
+      </a>
+    </li>
+    <li class="menu-item"
+        [routerLink]="['/user/dashboard/still-developing']"
+        [queryParams]="{prop: 'documentation'}"
+        routerLinkActive="active">
+      <a
+        class="menu-link">
+        <i class="menu-icon tf-icons bx bx-file"></i>
+        <div>Документация</div>
+      </a>
+    </li>
+  </ul>
+
+  <ul class="menu-inner py-1" *ngIf="isAdmin">
+    <li class="menu-item" routerLink="/admin/dashboard" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}">
+      <a href="javascript:void(0);" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <div data-i18n="Dashboards">Главная страница</div>
+      </a>
+    </li>
+
+    <li class="menu-item"
+        routerLink="/admin/dashboard/olympiad" routerLinkActive="active"
+        (click)="firstToggle = !firstToggle"
+        [ngClass]="{'open': firstToggle}">
+      <a href="javascript:void(0);" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-bookmark-alt"></i>
+        <div data-i18n="Layouts">Олимпиады</div>
+      </a>
+    </li>
+
+    <li class="menu-item"
+        routerLink="/admin/dashboard/projects-all" routerLinkActive="active"
+        (click)="firstToggle = !firstToggle"
+        [ngClass]="{'open': firstToggle}">
+      <a href="javascript:void(0);" class="menu-link">
+        <i class="menu-icon tf-icons bx bxl-meta"></i>
+        <div data-i18n="Layouts">Научные проекты</div>
+      </a>
+    </li>
+
+    <li class="menu-item"
+        routerLink="/admin/dashboard/students" routerLinkActive="active"
+        (click)="firstToggle = !firstToggle"
+        [ngClass]="{'open': firstToggle}">
+      <a href="javascript:void(0);" class="menu-link">
+        <i class="menu-icon tf-icons bx bxs-user-detail"></i>
+        <div data-i18n="Layouts">Ученики</div>
+      </a>
+    </li>
+
+
+  </ul>
+</aside>

@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-lg-11  mt-3">
+      <div class="card">
+        <mat-tab-group>
+          <mat-tab label="Данные о участниках">
+
+            <div class="card mb-4">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Данные о участниках</h5>
+                <small class="text-muted float-end">Проектная работа</small>
+              </div>
+              <div class="card-body">
+                <form [formGroup]="projectForm">
+                  <div class="mb-1">
+                    <label class="form-label" for="projectName">Тема проектной работы</label>
+                    <input type="text" class="form-control" formControlName="projectName" id="projectName" placeholder="Eco project" />
+                  </div>
+                  <div class="mb-5">
+                    <label class="form-label" for="subject">Предметное направление</label>
+                    <select id="subject" class="select2 form-select" formControlName="subject">
+                      <option value="">Выберите предметное направление</option>
+                      <option value="english">Английский</option>
+                      <option value="russian">Русский</option>
+                      <option value="math">Математика</option>
+                      <option value="physics">Физика</option>
+                      <option value="it">Информатика</option>
+                    </select>
+                  </div>
+
+                  <div class="mb-1">
+                    <label class="form-label" for="nameFirst">Имя первого участника</label>
+                    <input type="text" class="form-control" formControlName="nameFirst" id="nameFirst" placeholder="John" />
+                  </div>
+                  <div class="mb-1">
+                    <label class="form-label" for="surnameFirst">Фамилия первого участника</label>
+                    <input type="text" class="form-control" formControlName="surnameFirst" id="surnameFirst" placeholder="Doe" />
+                  </div>
+                  <div class="mb-5">
+                    <label class="form-label" for="iinFirst">ИИН первого участника</label>
+                    <input type="text" [maxlength]="12" [minlength]="12" class="form-control" formControlName="iinFirst" id="iinFirst" placeholder="123123123123" />
+                  </div>
+
+                  <div class="mb-1">
+                    <label class="form-label" for="nameSecond">Имя второго участника</label>
+                    <input type="text" class="form-control" formControlName="nameSecond" id="nameSecond" placeholder="John" />
+                  </div>
+                  <div class="mb-1">
+                    <label class="form-label" for="surnameSecond">Фамилия второго участника</label>
+                    <input type="text" class="form-control" formControlName="surnameSecond" id="surnameSecond" placeholder="Doe" />
+                  </div>
+                  <div class="mb-5">
+                    <label class="form-label" for="iinSecond">ИИН второго участника</label>
+                    <input type="text" [maxlength]="12" [minlength]="12" class="form-control" formControlName="iinSecond" id="iinSecond" placeholder="123123123123" />
+                  </div>
+
+                  <div class="mb-1">
+                    <label class="form-label" for="nameThird">Имя третего участника</label>
+                    <input type="text" class="form-control" formControlName="nameThird" id="nameThird" placeholder="John" />
+                  </div>
+                  <div class="mb-1">
+                    <label class="form-label" for="surnameThird">Фамилия третего участника</label>
+                    <input type="text" class="form-control" formControlName="surnameThird" id="surnameThird" placeholder="Doe" />
+                  </div>
+                  <div class="mb-5">
+                    <label class="form-label" for="iinThird">ИИН третего участника</label>
+                    <input type="text" [maxlength]="12" [minlength]="12" class="form-control" formControlName="iinThird" id="iinThird" placeholder="123123123123" />
+                  </div>
+
+                  <div class="mb-1">
+                    <label class="form-label" for="nameFourth">Имя четвертого участника</label>
+                    <input type="text" class="form-control" formControlName="nameFourth" id="nameFourth" placeholder="John" />
+                  </div>
+                  <div class="mb-1">
+                    <label class="form-label" for="surnameFourth">Фамилия четвертого участника</label>
+                    <input type="text" class="form-control" formControlName="surnameFourth" id="surnameFourth" placeholder="Doe" />
+                  </div>
+                  <div class="mb-5">
+                    <label class="form-label" for="iinFourth">ИИН четвертого участника</label>
+                    <input type="text" [maxlength]="12" [minlength]="12" class="form-control" formControlName="iinFourth" id="iinFourth" placeholder="123123123123" />
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+              </div>
+            </div>
+
+          </mat-tab>
+          <mat-tab label="Документация">
+            <div class="mb-4">
+              <h5 class="card-header">Загрузите документацию в электронном виде (docx, pdf, pptx)</h5>
+              <div class="card-body">
+                <div class="mb-3">
+                  <label for="formFile" class="form-label">документация</label>
+                  <input class="form-control" type="file" id="formFile" accept=".docx, .pdf, .pptx" (change)="onFileSelected($event)">
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Завершение">
+            <div class="mt-2 mb-2">
+              <h5 class="card-header">Завершение регистрации на проектную работу с командой</h5>
+              <div class="card-body">
+                <div class="demo-inline-spacing d-flex flex-column justify-content-center align-items-center">
+                  <span *ngIf="showError" class="mt-2 mb-2 d-flex justify-content-center align-items-center" style="color: red">{{errorMessage}}</span>
+                  <button (click)="submitAll()" class="btn btn-xl btn-primary">Завершить регистрацию</button>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

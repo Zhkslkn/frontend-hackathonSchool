@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row mt-1">
+    <div class="col-md-6 col-lg-4 mb-3 mt-2" *ngFor="let card of olympiadSubjects">
+      <div class="card">
+        <div class="card-header">{{card.tag}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{card.title}}</h5>
+          <p class="card-text">
+            {{card.text}}
+          </p>
+          <a [routerLink]="['/user/dashboard/register-olympiad']" [queryParams]="{subject: card.subject}" class="btn btn-primary">Участвовать</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

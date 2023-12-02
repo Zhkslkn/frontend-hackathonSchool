@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <h5 class="mt-4">{{courseData.subject}}</h5>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let topic of courseData.topics">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{topic.title}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>{{topic.content}}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
