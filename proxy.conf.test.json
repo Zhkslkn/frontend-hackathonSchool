@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://cross.example.kz",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
